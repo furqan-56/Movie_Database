@@ -1,73 +1,56 @@
 # Movie Management System
 
-## Overview
-The **Movie Management System** is a database-driven system designed to manage and organize data related to movies, their production details, genres, ratings, reviews, and user information. This system is primarily aimed at stakeholders such as production companies, directors, and users who want to interact with movie data. The system provides functionalities for storing information about movies, categorizing them by genre, tracking ratings and reviews, and managing user-related data.
+A comprehensive Movie Management System that organizes and manages movie-related data, including genres, production companies, directors, producers, actors, and more. The system also features a graphical user interface (GUI) to simplify interaction with the database.
 
-## Features
-- **Movie Information**: Store and retrieve movie details such as name, release year, plot, industry, and length.
-- **Categorization**: Movies can be categorized by genre and mood type.
-- **Production Details**: Track directors, producers, and production companies involved in a movie.
-- **Ratings & Reviews**: Users can rate movies and leave reviews.
-- **Multi-language Support**: Movies can be associated with different languages.
-- **Cast Information**: Track the lead actors in movies.
 
-## Database Design
+## 📚 Project Overview
 
-### Entity-Relationship Diagram (ERD)
-The ERD represents the database structure with its entities, attributes, and relationships. Key entities include **Movie**, **Director**, **Producer**, **Genre**, **Rating**, **User**, **Language**, **MoodType**, **ProductionCompany**, and **MovieCast**.
+This project implements a robust database for managing movies and related information such as genres, production companies, directors, producers, actors, and users. The database schema ensures data integrity and provides features like triggers to enforce constraints and cascade rules.
 
-### Key Relationships
-- **Movie ↔ Rating**: Movies are rated by users.
-- **Movie ↔ Director**: Movies are directed by a director.
-- **Movie ↔ Producer**: Movies are produced by producers.
-- **Movie ↔ Genre**: Movies belong to one or more genres.
-- **Movie ↔ Language**: Movies can be in one or more languages.
-- **Movie ↔ MoodType**: Movies are categorized by mood types.
-- **Movie ↔ MovieCast**: Tracks the lead hero in the cast.
-- **User ↔ Rating**: Users can rate movies.
+The database is accompanied by a GUI for user-friendly interaction, making it easier to manage data and perform CRUD (Create, Read, Update, Delete) operations.
 
-For more detailed information about the entities and their relationships, please refer to the **Entity-Relationship Diagram (ERD)** section in the documentation.
 
-### Relational Data Model (RDM)
-The system's database schema is based on the following tables:
+## 📂 Features
 
-- **Movie**: MovieID (PK), MovieName, ReleaseYear, OriginalTitle, MovieIndustry, Length, Plot
-- **Director**: DirectorID (PK), DirectorName
-- **Producer**: ProducerID (PK), ProducerName
-- **Genre**: GenreID (PK), GenreName
-- **Language**: LanguageID (PK), LanguageName
-- **MoodType**: MoodID (PK), MoodName
-- **MovieCast**: CastID (PK), LeadHeroName
-- **User**: UserID (PK), FirstName, LastName, Username, Email, Password, UserType
-- **ProductionCompany**: CompanyID (PK), CompanyName
-- **Rating**: RatingID (PK), RatingValue
+1. **Database Tables:**
+   - `Genres`: Manage movie genres.
+   - `ProductionCompanies`: Store production company details.
+   - `Producers`: Manage producer information.
+   - `Directors`: Store director details.
+   - `Movies`: Store and manage movies with metadata such as rating, runtime, and plot.
+   - `Actors`: Manage actor profiles.
+   - `MovieCast`: Track actor roles in movies.
+   - `Users`: Manage user accounts.
+   - `Admins`: Handle admin accounts.
 
-### ERD Constructs and Symbols
-- **Rectangles**: Represent entities.
-- **Ellipses**: Represent attributes.
-- **Diamonds**: Represent relationships.
-- **Lines with Cardinality**: Indicate the type of relationship (1:1, 1:N, M:N).
+2. **Triggers:**
+   - Ensure valid `DateOfBirth` for actors.
+   - Handle dependent records when deleting a movie.
 
-### Implementation Details
-- One-to-many relationships (e.g., Movie and Rating) were implemented using foreign keys.
-- Many-to-many relationships (e.g., IsRatedBy) were resolved using associative tables.
+3. **Data Integrity:**
+   - Validation using `CHECK` constraints.
+   - Relationships using `FOREIGN KEY` constraints.
 
-## How to Use
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/movie-management-system.git
-   ```
+4. **GUI:**
+   - User-friendly interface for managing database entries.
+   - Simplifies CRUD operations.
+   - Real-time interaction with the database.
 
-2. **Set up the database**:
-   Import the schema into your database management system (e.g., MySQL, PostgreSQL).
+## 🛠️ Technologies Used
 
-3. **Add Movie Data**:
-   You can add movies, directors, producers, and other related entities through the database tables.
+- **Database**: MySQL
+- **GUI Framework**: (Specify the framework used, e.g., Java Swing, PyQt, Tkinter, etc.)
+- **Programming Language**: SQL, (Specify the language used for GUI, e.g., Python, Java, etc.)
+- **Triggers and Constraints**: Enforce data integrity.
 
-4. **Rate Movies**:
-   Users can rate movies by inserting ratings into the `Rating` table.
 
-## Future Enhancements
-- **User Functionalities**: Additional features such as user profile management, watchlist, and notifications.
-- **Advanced Reporting**: Implement advanced reporting capabilities such as top-rated movies, movies by genre, and more.
-- **API Integration**: Expose the system’s functionality via a RESTful API.
+## 🚀 Getting Started
+
+### Prerequisites
+
+- MySQL Server (version 8.0 or later)
+- GUI Framework dependencies (install relevant dependencies based on the framework used for the GUI)
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
