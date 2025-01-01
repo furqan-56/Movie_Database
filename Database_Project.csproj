@@ -77,6 +77,12 @@
     <Compile Include="AdminLoginPage.Designer.cs">
       <DependentUpon>AdminLoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminMovieList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMovieList.Designer.cs">
+      <DependentUpon>AdminMovieList.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminMoviePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,12 @@
     <Compile Include="UserFilterPage.Designer.cs">
       <DependentUpon>UserFilterPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserMovieList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMovieList.Designer.cs">
+      <DependentUpon>UserMovieList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserMoviePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +171,9 @@
     <EmbeddedResource Include="AdminLoginPage.resx">
       <DependentUpon>AdminLoginPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminMovieList.resx">
+      <DependentUpon>AdminMovieList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminMoviePage.resx">
       <DependentUpon>AdminMoviePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserFilterPage.resx">
       <DependentUpon>UserFilterPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMovieList.resx">
+      <DependentUpon>UserMovieList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserMoviePage.resx">
       <DependentUpon>UserMoviePage.cs</DependentUpon>
@@ -260,6 +278,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\[GetPaidStock.com]-676fce9830c81.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

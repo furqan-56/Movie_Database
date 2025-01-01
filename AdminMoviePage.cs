@@ -99,5 +99,23 @@ namespace Database_Project
             searchPage.Show();
             this.Hide();  // Hide the current page (MMoviePage)
         }
+
+        private void movielistbutton_Click(object sender, EventArgs e)
+        {
+           
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is AdminMovieList)
+                {
+                    form.BringToFront();
+                    form.Focus();
+                    return;
+                }
+            }
+
+            AdminMovieList movielist = new AdminMovieList();
+            movielist.Show();
+            this.Hide();  // Hide the current page (MMoviePage)
+        }
     }
 }

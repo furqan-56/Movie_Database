@@ -58,5 +58,23 @@ namespace Database_Project
         {
             this.WindowState = FormWindowState.Minimized;  // Minimizes the form
         }
+
+        private void usermovielist_Click(object sender, EventArgs e)
+        {
+            // Check if SearchPage is already open, if not open it
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is UserMovieList)
+                {
+                    form.BringToFront();
+                    form.Focus();
+                    return;
+                }
+            }
+
+            UserMovieList usermoveilist = new UserMovieList();
+            usermoveilist.Show();
+            this.Hide();  // Hide the current page (MMoviePage)
+        }
     }
 }

@@ -264,7 +264,7 @@ namespace Database_Project
             genretextbox.Text = string.Empty;
             directortextbox.Text = string.Empty;
             producertextbox.Text = string.Empty;
-            companynametextbox.Text = string.Empty;
+            prodcompanytextbox.Text = string.Empty;
 
             titletextbox.Focus();
         }
@@ -629,17 +629,18 @@ namespace Database_Project
         }
 
         //////////////// Movie Cast //////////////////////
-        private void InsertMovieCastData(string movieTitle, string actorName, string role)
+        private void InsertMovieCastData(string movieTitle, string actorFullName, string role)
         {
-            string insertQuery = "INSERT INTO MovieCast (MovieTitle, ActorName, Role) VALUES (@MovieTitle, @ActorName, @Role)";
+            string insertQuery = "INSERT INTO MovieCast (MovieTitle, ActorFullName, Role) VALUES (@MovieTitle, @ActorFullName, @Role)";  // Corrected parameter name
 
+            // Input validation
             if (string.IsNullOrEmpty(movieTitle))
             {
                 MessageBox.Show("Please provide a valid Movie Title.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (string.IsNullOrEmpty(actorName))
+            if (string.IsNullOrEmpty(actorFullName))
             {
                 MessageBox.Show("Please provide a valid Actor Name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -671,16 +672,16 @@ namespace Database_Project
                         }
                     }
 
-                    // Check if ActorName exists in Actors table
-                    string checkActorQuery = "SELECT COUNT(1) FROM Actors WHERE FullName = @ActorName";
+                    // Check if ActorFullName exists in Actors table
+                    string checkActorQuery = "SELECT COUNT(1) FROM Actors WHERE FullName = @ActorFullName";  // Corrected parameter name
                     using (MySqlCommand checkActorCmd = new MySqlCommand(checkActorQuery, connection))
                     {
-                        checkActorCmd.Parameters.AddWithValue("@ActorName", actorName);
+                        checkActorCmd.Parameters.AddWithValue("@ActorFullName", actorFullName);  // Corrected parameter name
                         int actorExists = Convert.ToInt32(checkActorCmd.ExecuteScalar());
 
                         if (actorExists == 0)
                         {
-                            MessageBox.Show($"Actor '{actorName}' does not exist in the Actors table.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Actor '{actorFullName}' does not exist in the Actors table.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
                     }
@@ -689,7 +690,7 @@ namespace Database_Project
                     using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, connection))
                     {
                         insertCmd.Parameters.AddWithValue("@MovieTitle", movieTitle);
-                        insertCmd.Parameters.AddWithValue("@ActorName", actorName);
+                        insertCmd.Parameters.AddWithValue("@ActorFullName", actorFullName);  // Corrected parameter name
                         insertCmd.Parameters.AddWithValue("@Role", role);
 
                         insertCmd.ExecuteNonQuery(); // Execute the insert
@@ -716,7 +717,7 @@ namespace Database_Project
         private void moviecastsave_Click(object sender, EventArgs e)
         {
             string movieTitle = moviecastMName.Text.Trim();
-            string actorName = moviecastAName.Text.Trim();
+            string actorFullName = moviecastAName.Text.Trim();  // Corrected variable name
             string role = roletextbox.Text.Trim();
 
             // Validate the Movie Title, Actor Name, and Role
@@ -726,7 +727,7 @@ namespace Database_Project
                 return;
             }
 
-            if (string.IsNullOrEmpty(actorName))
+            if (string.IsNullOrEmpty(actorFullName))  // Corrected variable name
             {
                 MessageBox.Show("Please enter a valid Actor Name.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -739,7 +740,7 @@ namespace Database_Project
             }
 
             // Call the method to insert data into MovieCast
-            InsertMovieCastData(movieTitle, actorName, role);
+            InsertMovieCastData(movieTitle, actorFullName, role);  // Corrected parameter name
         }
 
         ////////////////////  PRODUCTION COMPANY /////////////////
@@ -808,10 +809,10 @@ namespace Database_Project
                 return;
             }
 
-            // Validate the founded year (it should be a valid number and greater than 1800)
-            if (!int.TryParse(founderyearcombobox.SelectedItem?.ToString(), out int foundedYear) || foundedYear <= 1800)
+            // Validate the founded year (it should be a valid number and greater than 1900)
+            if (!int.TryParse(founderyearcombobox.SelectedItem?.ToString(), out int foundedYear) || foundedYear <= 1900)
             {
-                MessageBox.Show("Please enter a valid founded year greater than 1800.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a valid founded year greater than 1900.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

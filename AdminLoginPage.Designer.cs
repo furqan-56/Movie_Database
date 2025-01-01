@@ -30,6 +30,7 @@ namespace Database_Project
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.back = new System.Windows.Forms.Button();
             this.hide = new System.Windows.Forms.Label();
             this.hideeyeicon = new System.Windows.Forms.PictureBox();
@@ -48,7 +49,6 @@ namespace Database_Project
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.logo = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hideeyeicon)).BeginInit();
             this.panel4.SuspendLayout();
@@ -78,6 +78,16 @@ namespace Database_Project
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(500, 530);
             this.panel2.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(19, 101);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(178, 36);
+            this.label4.TabIndex = 79;
+            this.label4.Text = "Hey Admin,";
             // 
             // back
             // 
@@ -291,16 +301,6 @@ namespace Database_Project
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(19, 101);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(178, 36);
-            this.label4.TabIndex = 79;
-            this.label4.Text = "Hey Admin,";
             // 
             // AdminLoginPage
             // 

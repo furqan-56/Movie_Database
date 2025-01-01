@@ -41,8 +41,11 @@ namespace Database_Project
             this.hide = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.usermovielist = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.filter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.search)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usermovielist)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -103,10 +106,10 @@ namespace Database_Project
             this.filter.BackColor = System.Drawing.SystemColors.Highlight;
             this.filter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.filter.Image = ((System.Drawing.Image)(resources.GetObject("filter.Image")));
-            this.filter.Location = new System.Drawing.Point(425, 230);
+            this.filter.Location = new System.Drawing.Point(317, 230);
             this.filter.Margin = new System.Windows.Forms.Padding(4);
             this.filter.Name = "filter";
-            this.filter.Size = new System.Drawing.Size(300, 225);
+            this.filter.Size = new System.Drawing.Size(200, 200);
             this.filter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.filter.TabIndex = 10;
             this.filter.TabStop = false;
@@ -120,7 +123,7 @@ namespace Database_Project
             this.search.Location = new System.Drawing.Point(75, 230);
             this.search.Margin = new System.Windows.Forms.Padding(4);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(300, 225);
+            this.search.Size = new System.Drawing.Size(200, 200);
             this.search.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.search.TabIndex = 12;
             this.search.TabStop = false;
@@ -154,7 +157,7 @@ namespace Database_Project
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(147, 459);
+            this.label4.Location = new System.Drawing.Point(95, 434);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(155, 18);
             this.label4.TabIndex = 24;
@@ -164,16 +167,42 @@ namespace Database_Project
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(505, 459);
+            this.label6.Location = new System.Drawing.Point(342, 434);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(150, 18);
             this.label6.TabIndex = 25;
             this.label6.Text = "Movie Filter Button";
             // 
+            // usermovielist
+            // 
+            this.usermovielist.BackColor = System.Drawing.SystemColors.Highlight;
+            this.usermovielist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.usermovielist.Image = global::Database_Project.Properties.Resources.images1;
+            this.usermovielist.Location = new System.Drawing.Point(569, 230);
+            this.usermovielist.Margin = new System.Windows.Forms.Padding(4);
+            this.usermovielist.Name = "usermovielist";
+            this.usermovielist.Size = new System.Drawing.Size(200, 200);
+            this.usermovielist.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.usermovielist.TabIndex = 26;
+            this.usermovielist.TabStop = false;
+            this.usermovielist.Click += new System.EventHandler(this.usermovielist_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(600, 434);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(139, 18);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Movie List Button";
+            // 
             // UserMoviePage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(800, 530);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.usermovielist);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.hide);
@@ -192,6 +221,7 @@ namespace Database_Project
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.filter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.search)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usermovielist)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +239,7 @@ namespace Database_Project
         private System.Windows.Forms.Label hide;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox usermovielist;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -45,10 +45,13 @@ namespace Database_Project
             this.filter = new System.Windows.Forms.PictureBox();
             this.insert = new System.Windows.Forms.PictureBox();
             this.detail = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.movielistbutton = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.update)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.insert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movielistbutton)).BeginInit();
             this.SuspendLayout();
             // 
             // hide
@@ -79,7 +82,7 @@ namespace Database_Project
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.label5.Location = new System.Drawing.Point(44, 143);
+            this.label5.Location = new System.Drawing.Point(33, 143);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(235, 38);
@@ -90,7 +93,7 @@ namespace Database_Project
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label3.Location = new System.Drawing.Point(57, 105);
+            this.label3.Location = new System.Drawing.Point(46, 105);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(235, 33);
@@ -150,11 +153,11 @@ namespace Database_Project
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(343, 487);
+            this.label7.Location = new System.Drawing.Point(326, 487);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(105, 18);
+            this.label7.Size = new System.Drawing.Size(155, 18);
             this.label7.TabIndex = 37;
-            this.label7.Text = "Detail Button";
+            this.label7.Text = "Movie Detail Button";
             // 
             // label8
             // 
@@ -222,10 +225,36 @@ namespace Database_Project
             this.detail.TabStop = false;
             this.detail.Click += new System.EventHandler(this.detail_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(326, 277);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(148, 18);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "Movies List Button";
+            // 
+            // movielistbutton
+            // 
+            this.movielistbutton.BackColor = System.Drawing.SystemColors.Highlight;
+            this.movielistbutton.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.movielistbutton.Image = ((System.Drawing.Image)(resources.GetObject("movielistbutton.Image")));
+            this.movielistbutton.Location = new System.Drawing.Point(295, 105);
+            this.movielistbutton.Margin = new System.Windows.Forms.Padding(4);
+            this.movielistbutton.Name = "movielistbutton";
+            this.movielistbutton.Size = new System.Drawing.Size(215, 168);
+            this.movielistbutton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.movielistbutton.TabIndex = 39;
+            this.movielistbutton.TabStop = false;
+            this.movielistbutton.Click += new System.EventHandler(this.movielistbutton_Click);
+            // 
             // AdminMoviePage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(800, 530);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.movielistbutton);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -248,6 +277,7 @@ namespace Database_Project
             ((System.ComponentModel.ISupportInitialize)(this.filter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.insert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movielistbutton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +300,7 @@ namespace Database_Project
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox movielistbutton;
     }
 }

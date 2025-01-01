@@ -41,6 +41,7 @@ namespace Database_Project
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.moviepanel = new System.Windows.Forms.Panel();
+            this.releaseyearcombobox = new System.Windows.Forms.ComboBox();
             this.moviessearch = new System.Windows.Forms.Button();
             this.prodcompanycombobox = new System.Windows.Forms.ComboBox();
             this.producernamecombobox = new System.Windows.Forms.ComboBox();
@@ -76,6 +77,7 @@ namespace Database_Project
             this.actornametextbox = new System.Windows.Forms.TextBox();
             this.nationalitycombobox = new System.Windows.Forms.ComboBox();
             this.prodcompanypanel = new System.Windows.Forms.Panel();
+            this.companynametextbox = new System.Windows.Forms.TextBox();
             this.companysearch = new System.Windows.Forms.Button();
             this.countrycombobox = new System.Windows.Forms.ComboBox();
             this.founderyearcombobox = new System.Windows.Forms.ComboBox();
@@ -86,8 +88,6 @@ namespace Database_Project
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.companycombobox = new System.Windows.Forms.ComboBox();
-            this.releaseyearcombobox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.moviepanel.SuspendLayout();
             this.actorpanel.SuspendLayout();
@@ -247,6 +247,14 @@ namespace Database_Project
             this.moviepanel.Name = "moviepanel";
             this.moviepanel.Size = new System.Drawing.Size(600, 530);
             this.moviepanel.TabIndex = 48;
+            // 
+            // releaseyearcombobox
+            // 
+            this.releaseyearcombobox.FormattingEnabled = true;
+            this.releaseyearcombobox.Location = new System.Drawing.Point(194, 174);
+            this.releaseyearcombobox.Name = "releaseyearcombobox";
+            this.releaseyearcombobox.Size = new System.Drawing.Size(375, 24);
+            this.releaseyearcombobox.TabIndex = 77;
             // 
             // moviessearch
             // 
@@ -602,6 +610,7 @@ namespace Database_Project
             // 
             // prodcompanypanel
             // 
+            this.prodcompanypanel.Controls.Add(this.companynametextbox);
             this.prodcompanypanel.Controls.Add(this.companysearch);
             this.prodcompanypanel.Controls.Add(this.countrycombobox);
             this.prodcompanypanel.Controls.Add(this.founderyearcombobox);
@@ -612,11 +621,17 @@ namespace Database_Project
             this.prodcompanypanel.Controls.Add(this.label31);
             this.prodcompanypanel.Controls.Add(this.label32);
             this.prodcompanypanel.Controls.Add(this.label33);
-            this.prodcompanypanel.Controls.Add(this.companycombobox);
             this.prodcompanypanel.Location = new System.Drawing.Point(200, 0);
             this.prodcompanypanel.Name = "prodcompanypanel";
             this.prodcompanypanel.Size = new System.Drawing.Size(600, 530);
             this.prodcompanypanel.TabIndex = 78;
+            // 
+            // companynametextbox
+            // 
+            this.companynametextbox.Location = new System.Drawing.Point(195, 141);
+            this.companynametextbox.Name = "companynametextbox";
+            this.companynametextbox.Size = new System.Drawing.Size(295, 22);
+            this.companynametextbox.TabIndex = 98;
             // 
             // companysearch
             // 
@@ -724,24 +739,7 @@ namespace Database_Project
             this.label33.TabIndex = 49;
             this.label33.Text = "Company Name";
             // 
-            // companycombobox
-            // 
-            this.companycombobox.FormattingEnabled = true;
-            this.companycombobox.Location = new System.Drawing.Point(196, 138);
-            this.companycombobox.Name = "companycombobox";
-            this.companycombobox.Size = new System.Drawing.Size(292, 24);
-            this.companycombobox.TabIndex = 98;
-            this.companycombobox.SelectedIndexChanged += new System.EventHandler(this.companycombobox_SelectedIndexChanged);
-            // 
-            // releaseyearcombobox
-            // 
-            this.releaseyearcombobox.FormattingEnabled = true;
-            this.releaseyearcombobox.Location = new System.Drawing.Point(194, 174);
-            this.releaseyearcombobox.Name = "releaseyearcombobox";
-            this.releaseyearcombobox.Size = new System.Drawing.Size(375, 24);
-            this.releaseyearcombobox.TabIndex = 77;
-            // 
-            // UpdatePage
+            // AdminUpdatePage
             // 
             this.ClientSize = new System.Drawing.Size(800, 530);
             this.Controls.Add(this.exit);
@@ -756,7 +754,7 @@ namespace Database_Project
             this.Controls.Add(this.actorpanel);
             this.Controls.Add(this.prodcompanypanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "UpdatePage";
+            this.Name = "AdminUpdatePage";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Load += new System.EventHandler(this.UpdatePage_Load);
             this.panel1.ResumeLayout(false);
@@ -831,7 +829,7 @@ namespace Database_Project
         private System.Windows.Forms.Button moviessearch;
         private System.Windows.Forms.Button actorsearch;
         private System.Windows.Forms.Button companysearch;
-        private System.Windows.Forms.ComboBox companycombobox;
         private System.Windows.Forms.ComboBox releaseyearcombobox;
+        private System.Windows.Forms.TextBox companynametextbox;
     }
 }

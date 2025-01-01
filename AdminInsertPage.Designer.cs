@@ -388,7 +388,7 @@ namespace Database_Project
             // 
             this.actorbutton.BackColor = System.Drawing.Color.Transparent;
             this.actorbutton.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.actorbutton.Location = new System.Drawing.Point(0, 144);
+            this.actorbutton.Location = new System.Drawing.Point(0, 325);
             this.actorbutton.Name = "actorbutton";
             this.actorbutton.Size = new System.Drawing.Size(200, 40);
             this.actorbutton.TabIndex = 62;
@@ -399,7 +399,7 @@ namespace Database_Project
             // prodcompanybutton
             // 
             this.prodcompanybutton.Font = new System.Drawing.Font("Century Gothic", 9.2F, System.Drawing.FontStyle.Italic);
-            this.prodcompanybutton.Location = new System.Drawing.Point(0, 369);
+            this.prodcompanybutton.Location = new System.Drawing.Point(0, 190);
             this.prodcompanybutton.Name = "prodcompanybutton";
             this.prodcompanybutton.Size = new System.Drawing.Size(200, 40);
             this.prodcompanybutton.TabIndex = 60;
@@ -410,7 +410,7 @@ namespace Database_Project
             // mooviecastbutton
             // 
             this.mooviecastbutton.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.mooviecastbutton.Location = new System.Drawing.Point(0, 324);
+            this.mooviecastbutton.Location = new System.Drawing.Point(0, 370);
             this.mooviecastbutton.Name = "mooviecastbutton";
             this.mooviecastbutton.Size = new System.Drawing.Size(200, 40);
             this.mooviecastbutton.TabIndex = 59;
@@ -421,7 +421,7 @@ namespace Database_Project
             // directorbutton
             // 
             this.directorbutton.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.directorbutton.Location = new System.Drawing.Point(0, 279);
+            this.directorbutton.Location = new System.Drawing.Point(0, 145);
             this.directorbutton.Name = "directorbutton";
             this.directorbutton.Size = new System.Drawing.Size(200, 40);
             this.directorbutton.TabIndex = 58;
@@ -432,7 +432,7 @@ namespace Database_Project
             // producerbutton
             // 
             this.producerbutton.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.producerbutton.Location = new System.Drawing.Point(0, 234);
+            this.producerbutton.Location = new System.Drawing.Point(0, 235);
             this.producerbutton.Name = "producerbutton";
             this.producerbutton.Size = new System.Drawing.Size(200, 40);
             this.producerbutton.TabIndex = 57;
@@ -443,7 +443,7 @@ namespace Database_Project
             // genrebutton
             // 
             this.genrebutton.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.genrebutton.Location = new System.Drawing.Point(0, 189);
+            this.genrebutton.Location = new System.Drawing.Point(0, 100);
             this.genrebutton.Name = "genrebutton";
             this.genrebutton.Size = new System.Drawing.Size(200, 40);
             this.genrebutton.TabIndex = 56;
@@ -454,7 +454,7 @@ namespace Database_Project
             // moviebutton
             // 
             this.moviebutton.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.moviebutton.Location = new System.Drawing.Point(0, 99);
+            this.moviebutton.Location = new System.Drawing.Point(0, 280);
             this.moviebutton.Name = "moviebutton";
             this.moviebutton.Size = new System.Drawing.Size(200, 40);
             this.moviebutton.TabIndex = 54;
@@ -465,9 +465,16 @@ namespace Database_Project
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.actorbutton);
             this.panel1.Controls.Add(this.back);
+            this.panel1.Controls.Add(this.producerbutton);
+            this.panel1.Controls.Add(this.directorbutton);
+            this.panel1.Controls.Add(this.mooviecastbutton);
+            this.panel1.Controls.Add(this.prodcompanybutton);
+            this.panel1.Controls.Add(this.genrebutton);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.moviebutton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -1052,17 +1059,10 @@ namespace Database_Project
             this.founderyearcombobox.TabIndex = 73;
             this.founderyearcombobox.SelectedIndexChanged += new System.EventHandler(this.founderyearcombobox_SelectedIndexChanged);
             // 
-            // InsertPage
+            // AdminInsertPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(800, 530);
-            this.Controls.Add(this.actorbutton);
-            this.Controls.Add(this.prodcompanybutton);
-            this.Controls.Add(this.mooviecastbutton);
-            this.Controls.Add(this.directorbutton);
-            this.Controls.Add(this.producerbutton);
-            this.Controls.Add(this.genrebutton);
-            this.Controls.Add(this.moviebutton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.hide);
@@ -1076,7 +1076,7 @@ namespace Database_Project
             this.Controls.Add(this.moviecastpanel);
             this.Controls.Add(this.prodcompanypanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "InsertPage";
+            this.Name = "AdminInsertPage";
             this.Text = "InsertPage";
             this.Load += new System.EventHandler(this.InsertPage_Load);
             this.moviepanel.ResumeLayout(false);

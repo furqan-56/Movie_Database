@@ -72,7 +72,7 @@ namespace Database_Project
             ResetButtonColors();
             moviebutton.BackColor = Color.LightGreen;
             moviepanel.Visible = true; actorpanel.Visible = false;
-             prodcompanypanel.Visible = false;
+            prodcompanypanel.Visible = false;
         }
         private void actorbutton_Click(object sender, EventArgs e)
         {
@@ -185,13 +185,14 @@ namespace Database_Project
                 return;
             }
 
-
+            // Ensure rating is valid
             if (!decimal.TryParse(ratingtextbox.Text, out decimal rating) || rating < 0 || rating > 10)
             {
                 MessageBox.Show("Invalid rating. It must be between 0 and 10.");
                 return;
             }
 
+            // Ensure runtime is valid
             if (!int.TryParse(runtimetextbox.Text, out int runtime) || runtime <= 0)
             {
                 MessageBox.Show("Invalid runtime. It must be greater than 0.");
@@ -203,6 +204,14 @@ namespace Database_Project
             string directorName = directornamecombobox.Text;
             string producerName = producernamecombobox.Text;
             string companyName = prodcompanycombobox.Text;
+
+            // Access the selected year as string or integer
+            string releaseYear = releaseyearcombobox.SelectedItem?.ToString(); // Access the selected value properly
+            if (string.IsNullOrEmpty(releaseYear)) // Ensure it is not empty or null
+            {
+                MessageBox.Show("Please select a valid release year.");
+                return;
+            }
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -218,7 +227,7 @@ namespace Database_Project
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@Title", title);
-                        cmd.Parameters.AddWithValue("@ReleaseYear", releaseyearcombobox);
+                        cmd.Parameters.AddWithValue("@ReleaseYear", releaseYear);  // Correctly using the selected year value
                         cmd.Parameters.AddWithValue("@GenreName", genreName);
                         cmd.Parameters.AddWithValue("@Rating", rating);
                         cmd.Parameters.AddWithValue("@Runtime", runtime);
@@ -244,6 +253,7 @@ namespace Database_Project
                 }
             }
         }
+
 
         // Populate genres, directors, producers, and companies
         private void PopulateGenres()
@@ -327,6 +337,7 @@ namespace Database_Project
         private void save_Click(object sender, EventArgs e)
         {
             UpdateMovieData();
+            MovieClearFields();
         }
 
 
@@ -377,7 +388,16 @@ namespace Database_Project
                                 gendercombobox.SelectedItem = gender;  // Set Gender in combobox
 
                                 string nationality = reader["Nationality"].ToString();
-                                nationalitycombobox.SelectedItem = nationality;  // Set Nationality in combobox
+                                if (!string.IsNullOrEmpty(nationality))
+                                {
+                                    // Set Nationality in combobox
+                                    nationalitycombobox.SelectedItem = nationality;  // Ensure the nationality is set
+                                }
+                                else
+                                {
+                                    // If no nationality is provided, clear or reset the combobox
+                                    nationalitycombobox.SelectedIndex = -1;
+                                }
 
                                 biographytextbox.Text = reader["Biography"].ToString();
                             }
@@ -396,12 +416,13 @@ namespace Database_Project
             }
         }
 
+
         private void ActorClearFields()
         {
             actornametextbox.Clear();
             dobirth.Value = DateTime.Now;
             gendercombobox.SelectedIndex = -1;
-            nationalitycombobox.Items.Clear();  // Clear Nationality field
+            nationalitycombobox.SelectedIndex = -1;  // Clear Nationality field
             biographytextbox.Clear();
         }
 
@@ -447,8 +468,9 @@ namespace Database_Project
             }
         }
 
-        ///////////////////// PRODUCER COMPANY ////////////////////////
-        // Triggered when the form loads (or any appropriate event)
+        ///////////////////// PRODUCTION COMPANY ////////////////////////// 
+        //// Triggered when the form loads (or any appropriate event)
+
         private void PopulateCompanyComboBox()
         {
             try
@@ -464,12 +486,20 @@ namespace Database_Project
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        companycombobox.Items.Clear(); // Clear existing items
+                        List<string> companyNames = new List<string>(); // List to store company names
                         while (reader.Read())
                         {
-                            // Add company names to the combobox
-                            companycombobox.Items.Add(reader["CompanyName"].ToString());
+                            companyNames.Add(reader["CompanyName"].ToString()); // Add company names to the list
                         }
+
+                        // Set up AutoComplete for companynametextbox
+                        companynametextbox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                        companynametextbox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+                        AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
+                        autoCompleteCollection.AddRange(companyNames.ToArray()); // Add company names to AutoComplete collection
+
+                        companynametextbox.AutoCompleteCustomSource = autoCompleteCollection; // Assign the AutoComplete source to the TextBox
                     }
                 }
             }
@@ -479,10 +509,11 @@ namespace Database_Project
             }
         }
 
-        // Triggered when the user leaves the company name textbox
-        private void companynametextbox_Leave(object sender, EventArgs e)
+
+        // Triggered when the user clicks the search button
+        private void companysearch_Click_1(object sender, EventArgs e)
         {
-            string companyName = companycombobox.Text;
+            string companyName = companynametextbox.Text.Trim();  // Get value from companynametextbox
 
             if (string.IsNullOrEmpty(companyName))
             {
@@ -498,9 +529,9 @@ namespace Database_Project
 
                     // Query to fetch company details by name
                     string query = @"
-                SELECT Country, ReleaseYear, Headquarters 
-                FROM ProductionCompanies 
-                WHERE CompanyName = @CompanyName";
+            SELECT Country, FoundedYear, Headquarters
+            FROM ProductionCompanies 
+            WHERE CompanyName = @CompanyName";  // Corrected to use FoundedYear
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@CompanyName", companyName);
 
@@ -510,13 +541,13 @@ namespace Database_Project
                         {
                             // Populate the fields with fetched data
                             countrycombobox.Text = reader["Country"].ToString();
-                            founderyearcombobox.Text = reader["ReleaseYear"].ToString();  // Corrected the column name to ReleaseYear
+                            founderyearcombobox.Text = reader["FoundedYear"].ToString();  // Correctly set the founded year
                             headquarterstextbox.Text = reader["Headquarters"].ToString();
                         }
                         else
                         {
                             MessageBox.Show("No matching company found.");
-                            ProdCompanyClearFields();
+                            ProdCompanyClearFields();  // Clear the fields if no company is found
                         }
                     }
                 }
@@ -530,7 +561,7 @@ namespace Database_Project
         // Triggered when the save button is clicked
         private void prodcompanysave_Click(object sender, EventArgs e)
         {
-            string companyName = companycombobox.Text;
+            string companyName = companynametextbox.Text;  // Get the company name from the TextBox
             string country = countrycombobox.Text;
             string foundedYearText = founderyearcombobox.Text;
             string headquarters = headquarterstextbox.Text;
@@ -557,12 +588,12 @@ namespace Database_Project
 
                     // Query to update the company details
                     string updateQuery = @"
-                UPDATE ProductionCompanies 
-                SET Country = @Country, ReleaseYear = @FoundedYear, Headquarters = @Headquarters 
-                WHERE CompanyName = @CompanyName";
+            UPDATE ProductionCompanies 
+            SET Country = @Country, FoundedYear = @FoundedYear, Headquarters = @Headquarters 
+            WHERE CompanyName = @CompanyName";  // Updated to use FoundedYear
                     MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
                     cmd.Parameters.AddWithValue("@Country", country);
-                    cmd.Parameters.AddWithValue("@FoundedYear", foundedYear);  // Updated to match the field name in the database
+                    cmd.Parameters.AddWithValue("@FoundedYear", foundedYear);  // Correctly pass founded year as integer
                     cmd.Parameters.AddWithValue("@Headquarters", headquarters);
                     cmd.Parameters.AddWithValue("@CompanyName", companyName);
 
@@ -585,31 +616,20 @@ namespace Database_Project
             }
         }
 
+
         // Clear all input fields
         private void ProdCompanyClearFields()
         {
-            // Clear all textbox
-            headquarterstextbox.Clear();
+            // Clear all textboxes
+            companynametextbox.Clear();  // Clear company name textbox
+            headquarterstextbox.Clear();  // Clear headquarters textbox
 
             // Clear ComboBox selections
-            countrycombobox.SelectedIndex = -1;  // Clears the selection
-            founderyearcombobox.SelectedIndex = -1;  // Clears the selection
-            companycombobox.SelectedIndex = -1;  // Clears the selection
+            countrycombobox.SelectedIndex = -1;  // Clears the selection for country
+            founderyearcombobox.SelectedIndex = -1;  // Clears the selection for founded year
 
             // Disable save button until valid input
             prodcompanysave.Enabled = false;
-        }
-
-        // Triggered when the search button is clicked
-        private void companysearch_Click_1(object sender, EventArgs e)
-        {
-            // Trigger search functionality based on company name (same as leave functionality)
-            companynametextbox_Leave(sender, e);
-        }
-
-        private void companycombobox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // You can trigger actions based on selected company name from the combobox if needed
         }
 
         private void back_Click(object sender, EventArgs e)
@@ -623,6 +643,5 @@ namespace Database_Project
             // Show the MainPage
             adminmoviePage.Show();
         }
-
     }
 }
